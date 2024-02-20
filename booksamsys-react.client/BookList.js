@@ -11,7 +11,7 @@ const useBooks = () => {
         const fetchBooks = async () => {
             setLoading(true);
             try {
-                const response = await axios.get('http://localhost:5000/api/books');
+                const response = await axios.get('http://localhost:3000/api/books');
                 setBooks(response.data);
                 setError(null);
             } catch (error) {

@@ -15,7 +15,7 @@ const App = () => {
 
     const fetchBooks = async () => {
         try {
-            const response = await axios.get('http://your-api-url/api/books');
+            const response = await axios.get('http://3000/api/books');
             setBooks(response.data);
         } catch (error) {
             console.error('Error fetching books:', error);

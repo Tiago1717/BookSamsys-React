@@ -1,47 +1,44 @@
-import { useState, useEffect } from 'react';
-import axios from 'axios';
-import BookItem from './BookItem';
+import React, { useState } from 'react';
+import { Table, Button, Modal } from 'react-bootstrap';
+import BookDetailModal from './BookDetailModal';
 
-const useBooks = () => {
-    const [books, setBooks] = useState([]);
-    const [loading, setLoading] = useState(false);
-    const [error, setError] = useState(null);
+const BookList = ({ books, handleView, handleEdit, handleDelete }) => {
+    const [selectedBook, setSelectedBook] = useState(null);
 
-    useEffect(() => {
-        const fetchBooks = async () => {
-            setLoading(true);
-            try {
-                const response = await axios.get('http://localhost:3000/api/books');
-                setBooks(response.data);
-                setError(null);
-            } catch (error) {
-                setError(error);
-            }
-            setLoading(false);
-        };
-        fetchBooks();
-    }, []);
-
-    return { books, loading, error };
-};
-
-const BookList = () => {
-    const { books, loading, error } = useBooks();
+    const handleViewClick = (book) => {
+        setSelectedBook(book);
+    };
 
     return (
         <div>
             <h2>Book List</h2>
-            {loading && <p>Loading...</p>}
-            {error && <p>Error fetching books: {error.message}</p>}
-            {books.length > 0 ? (
-                <ul>
+            <Table striped bordered hover>
+                <thead>
+                    <tr>
+                        <th>ISBN</th>
+                        <th>Name</th>
+                        <th>Author</th>
+                        <th>Price</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
                     {books.map((book) => (
-                        <BookItem key={book.id} book={book} />
+                        <tr key={book.id}>
+                            <td>{book.isbn}</td>
+                            <td>{book.name}</td>
+                            <td>{book.author}</td>
+                            <td>{book.price}</td>
+                            <td>
+                                <Button variant="info" onClick={() => handleViewClick(book)}>View</Button>{' '}
+                                <Button variant="warning" onClick={() => handleEdit(book)}>Edit</Button>{' '}
+                                <Button variant="danger" onClick={() => handleDelete(book.id)}>Delete</Button>
+                            </td>
+                        </tr>
                     ))}
-                </ul>
-            ) : (
-                <p>No books to display</p>
-            )}
+                </tbody>
+            </Table>
+            {selectedBook && <BookDetailModal book={selectedBook} onHide={() => setSelectedBook(null)} />}
         </div>
     );
 };

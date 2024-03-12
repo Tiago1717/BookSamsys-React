@@ -11,7 +11,7 @@ const App = () => {
 
     useEffect(() => {
         fetchBooks();
-    }, []);
+    }, []);8
 
     const fetchBooks = async () => {
         try {

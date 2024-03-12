@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
-import { Table, Button, Modal } from 'react-bootstrap';
+import { Table, Button } from 'react-bootstrap';
 import BookDetailModal from './BookDetailModal';
 
-const BookList = ({ books, handleView, handleEdit, handleDelete }) => {
+const BookList = ({ books }) => {
     const [selectedBook, setSelectedBook] = useState(null);
 
     const handleViewClick = (book) => {
@@ -30,9 +30,8 @@ const BookList = ({ books, handleView, handleEdit, handleDelete }) => {
                             <td>{book.author}</td>
                             <td>{book.price}</td>
                             <td>
-                                <Button variant="info" onClick={() => handleViewClick(book)}>View</Button>{' '}
-                                <Button variant="warning" onClick={() => handleEdit(book)}>Edit</Button>{' '}
-                                <Button variant="danger" onClick={() => handleDelete(book.id)}>Delete</Button>
+                                <Button variant="info" onClick={() => handleViewClick(book)}>View</Button>
+                               
                             </td>
                         </tr>
                     ))}

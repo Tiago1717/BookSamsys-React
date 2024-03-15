@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import axios from 'axios';
 
-const EditBook = ({ book }) => {
+const EditBook = (book) => {
     const [editedBook, setEditedBook] = useState({ ...book });
 
     const handleChange = (e) => {

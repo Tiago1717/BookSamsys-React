@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
 import { Table, Button } from 'react-bootstrap';
 import BookDetailModal from './BookDetailModal';
+import Book from './Book.js';
 
-const BookList = ({ books }) => {
+
+const BookList = ({ book }) => {
     const [selectedBook, setSelectedBook] = useState(null);
 
     const handleViewClick = (book) => {

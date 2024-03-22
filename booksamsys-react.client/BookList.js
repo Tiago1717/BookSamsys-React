@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Table, Button } from 'react-bootstrap';
 import BookDetailModal from './BookDetailModal';
-import book from './Book.js';
+import Book from './Book.js';
 
 
 const BookList = ({ book }) => {

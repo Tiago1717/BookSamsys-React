@@ -13,13 +13,9 @@ const DeleteBook = ({ isbn, refreshBooks }) => {
         }
     }, [isbn, refreshBooks]);
 
-    return <DeleteButton onClick={handleDelete} />;
-};
-
-const DeleteButton = ({ onClick }) => {
     return (
         <div>
-            <button onClick={onClick}>Delete Book</button>
+            <button onClick={handleDelete}>Delete Book</button>
         </div>
     );
 };

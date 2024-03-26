@@ -1,4 +1,3 @@
-import React from 'react';
 
 const Cart = ({ cartItems, removeFromCart }) => {
     return (
@@ -8,7 +7,7 @@ const Cart = ({ cartItems, removeFromCart }) => {
                 <p>Your cart is empty</p>
             ) : (
                 <ul>
-                    {cartItems.map((item) => (
+                    {cartItems((item) => (
                         <li key={item.id}>
                             <span>{item.title} - {item.quantity}</span>
                             <button onClick={() => removeFromCart(item.id)}>Remove</button>

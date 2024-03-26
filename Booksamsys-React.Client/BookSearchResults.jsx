@@ -1,22 +1,22 @@
-import React from 'react';
 import { Table } from 'react-bootstrap';
 
-const BookSearchResults = ({ books }) => {
+const BookSearchResults = ({ Books }) => {
     return (
         <Table striped bordered hover>
             <thead>
                 <tr>
                     <th>ISBN</th>
-                    <th>Title</th>
+                    <th>Name</th>
                     <th>Author</th>
                     <th>Price</th>
+                    <th>Actions</th>
                 </tr>
             </thead>
             <tbody>
-                {books.map((book) => (
-                    <tr key={book.isbn}>
+                {Books((book) => (
+                    <tr key={book.id}>
                         <td>{book.isbn}</td>
-                        <td>{book.title}</td>
+                        <td>{book.name}</td>
                         <td>{book.author}</td>
                         <td>{book.price}</td>
                     </tr>

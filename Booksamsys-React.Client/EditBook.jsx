@@ -24,7 +24,7 @@ const EditBook = (book) => {
             <h2>Edit Book</h2>
             <form onSubmit={handleSubmit}>
                 <div>
-                <br></br>
+                    <br></br>
                     <label>Book Name:</label>
                     <input type="text" name="bookName" value={editedBook.bookName} onChange={handleChange} />
                 </div>
